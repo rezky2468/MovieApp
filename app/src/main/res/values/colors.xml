@@ -4,5 +4,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="red">#7E1616</color>
+    <color name="orange">#FCC252</color>
+
+    <color name="black75">#BF000000</color>
+    <color name="black50">#75000000</color>
+    <color name="black25">#40000000</color>
 
 </resources>

@@ -1,0 +1,16 @@
+
+Use this url.. just replace with your youtude video id
+
+String url = "https://img.youtube.com/vi/"+{ID}+"/0.jpg";
+Glide.with(this).load(url).into(imageView);
+Option 1 – Get the custom thumbnail in 320 x 180 small image resolution
+
+http://img.youtube.com/vi/{ID}/mqdefault.jpg
+
+Option 2 – Get the custom thumbnail in 480 x 360 standard image resolution
+
+http://img.youtube.com/vi/{ID}/0.jpg
+
+Option 3 – Get the custom thumbnail in 720p or 1080p HD image resolution
+
+http://img.youtube.com/vi/{ID}/maxresdefault.jpg

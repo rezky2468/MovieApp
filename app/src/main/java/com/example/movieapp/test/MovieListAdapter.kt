@@ -4,17 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.movieapp.BuildConfig
 import com.example.movieapp.databinding.LayoutRecyclerViewBinding
-import com.example.movieapp.models.Movie
+import com.example.movieapp.models.movies.MovieNowPlaying
 
 class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
 
-    private val movieList = ArrayList<Movie>()
+    private val nowPlayingList = ArrayList<MovieNowPlaying>()
 
-    fun setMovie(list: List<Movie>) {
-        this.movieList.clear()
-        this.movieList.addAll(list)
+    fun setMovie(list: List<MovieNowPlaying>) {
+        this.nowPlayingList.clear()
+        this.nowPlayingList.addAll(list)
         notifyDataSetChanged()
     }
 
@@ -27,17 +26,17 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieListViewHold
     }
 
     override fun getItemCount(): Int {
-        return movieList.size
+        return nowPlayingList.size
     }
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
         with(holder) {
-            with(movieList[position]) {
+            with(nowPlayingList[position]) {
                 binding.apply {
                     titleTextView.text = title
                     overviewTextView.text = overview
                     releaseDateTextView.text = releaseDate
-                    Glide.with(itemView).load(BuildConfig.PHOTO_BASE_URL + posterPath).into(imageView)
+                    Glide.with(itemView).load("" + posterPath).into(imageView)
                 }
             }
         }

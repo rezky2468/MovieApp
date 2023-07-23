@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.detail.MovieDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red" />
+
+    <FrameLayout
+        android:id="@+id/sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_bottom_sheet"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_remove" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/poster_image_view"
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="16dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_background"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/title_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:maxLines="3"
+                        android:text="Transformer: Rise of The Beasts Back Home Again Indiana Land Damn Man"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/poster_image_view"
+                        app:layout_constraintTop_toTopOf="@id/poster_image_view" />
+
+                    <TextView
+                        android:id="@+id/category_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="6dp"
+                        android:text="PG-13"
+                        app:layout_constraintStart_toEndOf="@id/poster_image_view"
+                        app:layout_constraintTop_toBottomOf="@id/title_text_view" />
+
+                    <TextView
+                        android:id="@+id/release_date_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="6dp"
+                        android:text="09/06/2023 (US)"
+                        app:layout_constraintEnd_toStartOf="@id/duration_text_view"
+                        app:layout_constraintStart_toEndOf="@id/category_text_view"
+                        app:layout_constraintTop_toBottomOf="@id/title_text_view" />
+
+                    <TextView
+                        android:id="@+id/duration_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="2h 7m"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/title_text_view" />
+
+                    <TextView
+                        android:id="@+id/genre_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="6dp"
+                        android:text="Action, Adventure, Fiction"
+                        app:layout_constraintStart_toEndOf="@id/poster_image_view"
+                        app:layout_constraintTop_toBottomOf="@id/category_text_view" />
+
+                    <ImageView
+                        android:id="@+id/btn1_image_view"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_background"
+                        app:layout_constraintStart_toEndOf="@id/poster_image_view"
+                        app:layout_constraintTop_toBottomOf="@id/genre_text_view" />
+
+                    <ImageView
+                        android:id="@+id/btn2_image_view"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_background"
+                        app:layout_constraintStart_toEndOf="@id/btn1_image_view"
+                        app:layout_constraintTop_toBottomOf="@id/genre_text_view" />
+
+                    <ImageView
+                        android:id="@+id/btn3_image_view"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_background"
+                        app:layout_constraintStart_toEndOf="@id/btn2_image_view"
+                        app:layout_constraintTop_toBottomOf="@id/genre_text_view" />
+
+                    <ImageView
+                        android:id="@+id/btn4_image_view"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_background"
+                        app:layout_constraintStart_toEndOf="@id/btn3_image_view"
+                        app:layout_constraintTop_toBottomOf="@id/genre_text_view" />
+
+                    <TextView
+                        android:id="@+id/description_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="16dp"
+                        android:maxLength="700"
+                        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. "
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/poster_image_view" />
+
+                    <TextView
+                        android:id="@+id/backdrops_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Backdrops"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/description_text_view" />
+
+                    <ImageView
+                        android:id="@+id/show_backdrops_image_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_arrow_circle_right"
+                        app:layout_constraintBottom_toBottomOf="@id/backdrops_text_view"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/backdrops_text_view"
+                        app:tint="@color/black" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/backdrops_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="8dp"
+                        android:clipToPadding="false"
+                        android:nestedScrollingEnabled="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/backdrops_text_view" />
+
+                    <TextView
+                        android:id="@+id/cast_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Top Billed Cast"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/backdrops_recycler_view" />
+
+                    <ImageView
+                        android:id="@+id/show_cast_image_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_arrow_circle_right"
+                        app:layout_constraintBottom_toBottomOf="@id/cast_text_view"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/cast_text_view"
+                        app:tint="@color/black" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/cast_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="208dp"
+                        android:clipToPadding="false"
+                        android:paddingHorizontal="12dp"
+                        tools:listitem="@layout/layout_recycler_view_cast"
+                        android:paddingVertical="8dp"
+                        tools:itemCount="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cast_text_view" />
+
+                    <TextView
+                        android:id="@+id/video_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Videos"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cast_recycler_view" />
+
+                    <ImageView
+                        android:id="@+id/show_video_image_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_arrow_circle_right"
+                        app:layout_constraintBottom_toBottomOf="@id/video_text_view"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/video_text_view"
+                        app:tint="@color/black" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/video_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="8dp"
+                        tools:listitem="@layout/layout_recycler_view_videos_preview"
+                        tools:itemCount="2"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/video_text_view" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

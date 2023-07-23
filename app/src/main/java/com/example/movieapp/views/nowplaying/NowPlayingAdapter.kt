@@ -9,10 +9,9 @@ import com.bumptech.glide.Glide
 import com.example.movieapp.BuildConfig
 //import com.example.movieapp.data.NowPlayingLocal
 import com.example.movieapp.databinding.LayoutRecyclerViewBinding
-import com.example.movieapp.models.UpcomingMovie
-import java.util.logging.Logger
+import com.example.movieapp.models.movies.MovieUpcoming
 
-class NowPlayingAdapter : ListAdapter<UpcomingMovie, NowPlayingAdapter.NowPlayingViewHolder>(NowPlayingComparator()) {
+class NowPlayingAdapter : ListAdapter<MovieUpcoming, NowPlayingAdapter.NowPlayingViewHolder>(NowPlayingComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NowPlayingViewHolder {
         val binding = LayoutRecyclerViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -29,10 +28,10 @@ class NowPlayingAdapter : ListAdapter<UpcomingMovie, NowPlayingAdapter.NowPlayin
 
     class NowPlayingViewHolder(private val binding: LayoutRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: UpcomingMovie) {
+        fun bind(movie: MovieUpcoming) {
             binding.apply {
                 Glide.with(itemView)
-                    .load(BuildConfig.PHOTO_BASE_URL + movie.posterPath)
+                    .load(BuildConfig.TMDB_PHOTO_BASE_URL + movie.posterPath)
                     .into(imageView)
                 titleTextView.text = movie.title.toString()
                 overviewTextView.text = movie.overview
@@ -42,12 +41,12 @@ class NowPlayingAdapter : ListAdapter<UpcomingMovie, NowPlayingAdapter.NowPlayin
 
     }
 
-    class NowPlayingComparator : DiffUtil.ItemCallback<UpcomingMovie>() {
-        override fun areItemsTheSame(oldItem: UpcomingMovie, newItem: UpcomingMovie): Boolean {
+    class NowPlayingComparator : DiffUtil.ItemCallback<MovieUpcoming>() {
+        override fun areItemsTheSame(oldItem: MovieUpcoming, newItem: MovieUpcoming): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: UpcomingMovie, newItem: UpcomingMovie): Boolean {
+        override fun areContentsTheSame(oldItem: MovieUpcoming, newItem: MovieUpcoming): Boolean {
             return oldItem == newItem
         }
     }

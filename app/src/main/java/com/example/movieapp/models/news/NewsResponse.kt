@@ -1,24 +1,27 @@
-package com.example.movieapp.models
+package com.example.movieapp.models.news
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Parcelize
-data class Response(
+data class NewsResponse(
 
-	@field:SerializedName("totalResults")
+    @field:SerializedName("totalResults")
 	val totalResults: Int? = 0,
 
-	@field:SerializedName("articles")
-	val articles: List<ArticlesItem?>? = null,
+    @field:SerializedName("articles")
+	val articles: List<Articles>,
 
-	@field:SerializedName("status")
+    @field:SerializedName("status")
 	val status: String? = null
 ) : Parcelable
 
 @Parcelize
-data class ArticlesItem(
+@Entity(tableName = "news_relevancy")
+data class Articles(
 
 	@field:SerializedName("publishedAt")
 	val publishedAt: String? = null,
@@ -39,7 +42,7 @@ data class ArticlesItem(
 	val title: String? = null,
 
 	@field:SerializedName("url")
-	val url: String? = null,
+	@PrimaryKey val url: String,
 
 	@field:SerializedName("content")
 	val content: String? = null

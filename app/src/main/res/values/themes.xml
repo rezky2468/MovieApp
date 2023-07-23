@@ -3,7 +3,32 @@
     <style name="Base.Theme.MovieApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- Set the status bar background color to red -->
+        <item name="android:statusBarColor">@color/red</item>
+
     </style>
 
     <style name="Theme.MovieApp" parent="Base.Theme.MovieApp" />
+
+    <style name="WhiteStatusBarTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize other attributes of the theme if needed -->
+        <!-- ... -->
+        <!-- Set the status bar icon color to light (default) -->
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Set the status bar background color to white -->
+        <item name="android:statusBarColor">@android:color/white</item>
+    </style>
+
+    <style name="RedStatusBarTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/red</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_splash_screen</item>
+        <!-- Customize other attributes of the theme if needed -->
+        <!-- ... -->
+    </style>
+
 </resources>

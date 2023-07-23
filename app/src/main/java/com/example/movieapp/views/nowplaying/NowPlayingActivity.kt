@@ -26,7 +26,7 @@ class NowPlayingActivity : AppCompatActivity() {
                 layoutManager = LinearLayoutManager(this@NowPlayingActivity)
             }
 
-            viewModel.upcomingMovies.observe(this@NowPlayingActivity) { result ->
+            viewModel.movieUpcoming.observe(this@NowPlayingActivity) { result ->
                 nowPlayingAdapter.submitList(result.data)
             }
 

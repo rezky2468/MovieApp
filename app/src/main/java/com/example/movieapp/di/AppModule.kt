@@ -6,13 +6,14 @@ import android.app.Application
 import androidx.room.Room
 import com.example.movieapp.BuildConfig
 import com.example.movieapp.api.ApiService
-import com.example.movieapp.api.MovieDatabase
+import com.example.movieapp.api.LocalDatabase
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -38,9 +39,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(httpClient: OkHttpClient): Retrofit {
+    @Named("movieApi")
+    fun provideRetrofitMovie(httpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(BuildConfig.TMDB_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(httpClient)
             .build()
@@ -48,13 +50,32 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideMovieApi(retrofit: Retrofit): ApiService =
+    @Named("movieApi")
+    fun provideMovieApi(@Named("movieApi") retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 
     @Provides
     @Singleton
-    fun provideDatabase(app: Application): MovieDatabase =
-        Room.databaseBuilder(app, MovieDatabase::class.java, "now_playing_database")
+    @Named("newsApi")
+    fun provideRetrofitNews(httpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.NEWS_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(httpClient)
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    @Named("newsApi")
+    fun provideNewsApi(@Named("newsApi") retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDatabase(app: Application): LocalDatabase =
+        Room.databaseBuilder(app, LocalDatabase::class.java, "now_playing_database")
+            .fallbackToDestructiveMigration()
             .build()
 
 }
