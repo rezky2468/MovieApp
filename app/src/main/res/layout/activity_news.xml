@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
+    android:scrollbars="none"
     android:layout_height="wrap_content"
     tools:context=".views.home.news.NewsActivity">
 
@@ -15,7 +17,7 @@
             android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:padding="8dp"
+            android:paddingHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -39,24 +41,12 @@
                 android:text="News"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textSize="20sp"
+                android:textColor="@color/black75"
                 android:textStyle="bold"
-                android:layout_marginHorizontal="8dp"
+                android:layout_marginStart="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/back_image_view"
-                app:layout_constraintEnd_toStartOf="@id/share_image_view"/>
-
-            <ImageView
-                android:id="@+id/share_image_view"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:padding="4dp"
-                app:tint="@color/black75"
-                android:clickable="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_share"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -64,10 +54,19 @@
             android:id="@+id/layout1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#40000000"
+            android:background="@color/black25"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_view"
+            android:scrollbars="none"
+            android:padding="4dp"
+            android:clipToPadding="false"/>
+
 
     </LinearLayout>
 

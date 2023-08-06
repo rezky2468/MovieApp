@@ -4,12 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
-import com.example.movieapp.models.movies.MovieDetailResponse
 import com.example.movieapp.repositories.MovieRepository
-import com.example.movieapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 //class MovieViewModel : ViewModel() {
@@ -39,25 +35,10 @@ class MovieViewModel @Inject constructor(
     val moviePopular = repository.getMoviePopular().asLiveData()
     val movieTopRated = repository.getMovieTopRated().asLiveData()
 
-//    val movieDetail = repository.getMovieDetail().asLiveData()
 
-    // Expose a method to fetch movie details with a dynamic movie ID
-    private val _movieDetail = MutableLiveData<Resource<MovieDetailResponse>>()
-    val movieDetail: LiveData<Resource<MovieDetailResponse>> get() = _movieDetail
 
-    fun fetchMovieDetail(movieId: Int) {
-        _movieDetail.value = Resource.Loading(null)
-        viewModelScope.launch {
-            repository.getMovieDetail(movieId).asLiveData().observeForever {
-                _movieDetail.value = it
-            }
-        }
-    }
-
-    fun fetchMovieImages(movieId: Int) = repository.getMovieImages(movieId).asLiveData()
-    fun fetchMovieCasts(movieId: Int) = repository.getMovieCasts(movieId).asLiveData()
-    fun fetchMovieVideos(movieId: Int) = repository.getMovieVideos(movieId).asLiveData()
     fun fetchMovieSearch(query: String) = repository.getMovieSearch(query).asLiveData()
+    fun fetchMultiSearch(query: String) = repository.getMultiSearch(query).asLiveData()
 
     //======================================== TV SERIES ========================================//
 
@@ -66,12 +47,15 @@ class MovieViewModel @Inject constructor(
     val tvPopular = repository.getTvPopular().asLiveData()
     val tvTopRated = repository.getTvTopRated().asLiveData()
 
-    fun fetchTvBackdrops(seriesId: Int) = repository.getTvBackdrops(seriesId).asLiveData()
-    fun fetchTvCasts(seriesId: Int) = repository.getTvCasts(seriesId).asLiveData()
-    fun fetchTvVideos(seriesId: Int) = repository.getTvVideos(seriesId).asLiveData()
-
-
-
     fun fetchNewsByRelevancy(pageSize: Int) =  repository.getNewsByRelevancy(pageSize).asLiveData()
+
+    // ============================================================================================
+
+    fun fetchMovieDetails(movieId: Int) = repository.getMovieDetails(movieId).asLiveData()
+    fun fetchTvSeriesDetails(seriesId: Int) = repository.getTvSeriesDetails(seriesId).asLiveData()
+
+    val requestToken = repository.createRequestToken().asLiveData() // is this correct?
+    val callback = repository.createRequestToken()
+
 
 }

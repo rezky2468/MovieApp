@@ -7,14 +7,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.BuildConfig
+import com.example.movieapp.R
 import com.example.movieapp.databinding.LayoutRecyclerViewMoviePreviewBinding
+import com.example.movieapp.databinding.LayoutRecyclerViewMoviePreviewWhiteBinding
 import com.example.movieapp.models.tv.TvPopular
 
 class TvPopularAdapter(private val listener: OnItemClickListener) :
     ListAdapter<TvPopular, TvPopularAdapter.TvPopularViewHolder>(TvPopularComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvPopularViewHolder {
-        val binding = LayoutRecyclerViewMoviePreviewBinding.inflate(
+        val binding = LayoutRecyclerViewMoviePreviewWhiteBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -29,11 +31,12 @@ class TvPopularAdapter(private val listener: OnItemClickListener) :
         }
     }
 
-    class TvPopularViewHolder(private val binding: LayoutRecyclerViewMoviePreviewBinding) :
+    class TvPopularViewHolder(private val binding: LayoutRecyclerViewMoviePreviewWhiteBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(tv: TvPopular, listener: OnItemClickListener) {
             binding.apply {
                 Glide.with(itemView).load(BuildConfig.TMDB_PHOTO_BASE_URL + tv.posterPath)
+                    .placeholder(R.drawable.bg_placeholder)
                     .into(imageView)
                 textView.text = tv.name
                 itemView.setOnClickListener {

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context=".views.home.movies.MoviesFragment">
 
     <LinearLayout
@@ -26,8 +27,10 @@
                     android:id="@+id/labell"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_marginHorizontal="16dp"
                     android:layout_marginBottom="16dp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
                     android:text="@string/movie_now_playing"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -36,15 +39,17 @@
 
                 <ImageView
                     android:id="@+id/show_now_playing_image_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginEnd="16dp"
-                    android:padding="5dp"
+                    android:padding="3dp"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_arrow_circle_right"
                     app:layout_constraintBottom_toBottomOf="@id/labell"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/labell"
-                    app:tint="@color/black" />
+                    app:tint="@color/black75" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view"
@@ -52,6 +57,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:clipToPadding="false"
+                    tools:listitem="@layout/layout_recycler_view_movie_preview_white"
+                    tools:itemCount="1"
                     android:orientation="horizontal"
                     android:paddingHorizontal="8dp"
                     android:paddingBottom="40dp"
@@ -83,10 +90,12 @@
 
             <ImageView
                 android:id="@+id/show_upcoming_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:padding="5dp"
+                android:padding="3dp"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_arrow_circle_right"
                 app:layout_constraintBottom_toBottomOf="@id/upcoming_label"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -99,6 +108,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:clipToPadding="false"
+                tools:listitem="@layout/layout_recycler_view_movie_preview"
+                tools:itemCount="1"
                 android:paddingHorizontal="8dp"
                 android:paddingBottom="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -132,21 +143,25 @@
 
                 <ImageView
                     android:id="@+id/show_news_image_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginEnd="16dp"
-                    android:padding="5dp"
+                    android:padding="3dp"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_arrow_circle_right"
                     app:layout_constraintBottom_toBottomOf="@id/label2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/label2"
-                    app:tint="@color/black" />
+                    app:tint="@color/black75" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/news_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    tools:listitem="@layout/layout_recycler_view_news"
+                    tools:itemCount="2"
                     android:nestedScrollingEnabled="false"
                     android:paddingHorizontal="4dp"
                     android:paddingBottom="40dp"
@@ -178,10 +193,12 @@
 
             <ImageView
                 android:id="@+id/show_popular_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:padding="5dp"
+                android:padding="3dp"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_arrow_circle_right"
                 app:layout_constraintBottom_toBottomOf="@id/movie_popular_label"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -195,6 +212,8 @@
                 android:layout_marginTop="16dp"
                 android:clipToPadding="false"
                 android:paddingHorizontal="8dp"
+                tools:listitem="@layout/layout_recycler_view_movie_preview"
+                tools:itemCount="1"
                 android:paddingBottom="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -222,23 +241,27 @@
 
             <ImageView
                 android:id="@+id/show_top_rated_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:padding="5dp"
+                android:padding="3dp"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_arrow_circle_right"
                 app:layout_constraintBottom_toBottomOf="@id/movie_top_rated_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/movie_top_rated_label"
-                app:tint="@color/black" />
+                app:tint="@color/black75" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/top_rated_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                tools:listitem="@layout/layout_recycler_view_movie_preview_white"
+                tools:itemCount="1"
                 android:clipToPadding="false"
-                android:paddingHorizontal="4dp"
+                android:paddingHorizontal="8dp"
                 android:paddingBottom="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -247,5 +270,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
+
 
 </ScrollView>

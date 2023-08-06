@@ -14,19 +14,9 @@
             android:id="@+id/thumbnail_image_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/img1"
+            android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="16:9"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/thumbnail_overlay_image_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/black25"
-            android:scaleType="centerCrop"
+            android:src="@drawable/bg_placeholder"
             app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +33,7 @@
             android:text="2:20"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/thumbnail_image_view"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

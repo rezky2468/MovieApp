@@ -6,35 +6,36 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.movieapp.R
 import com.example.movieapp.databinding.LayoutRecyclerViewVideosBinding
-import com.example.movieapp.models.tv.TvVideo
+import com.example.movieapp.models.tv.TvSeriesVideo
 
-class TvVideosAdapter(
+class TvSeriesVideosAdapter(
     private val listener: OnItemClickListener,
-) : ListAdapter<TvVideo, TvVideosAdapter.TvVideosViewHolder>(
-    TvVideosComparator()
+) : ListAdapter<TvSeriesVideo, TvSeriesVideosAdapter.TvSeriesVideosViewHolder>(
+    TvSeriesVideosComparator()
 ) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvVideosViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvSeriesVideosViewHolder {
         val binding = LayoutRecyclerViewVideosBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return TvVideosViewHolder(binding)
+        return TvSeriesVideosViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: TvVideosViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TvSeriesVideosViewHolder, position: Int) {
         val currentItem = getItem(position)
         if (currentItem != null) {
             holder.bind(currentItem, listener)
         }
     }
 
-    class TvVideosViewHolder(
+    class TvSeriesVideosViewHolder(
         private val binding: LayoutRecyclerViewVideosBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(video: TvVideo, listener: OnItemClickListener) {
+        fun bind(video: TvSeriesVideo, listener: OnItemClickListener) {
             binding.apply {
 
                 val thumbnail = "https://img.youtube.com/vi/" + video.key + "/0.jpg"
@@ -43,29 +44,30 @@ class TvVideosAdapter(
                 typeTextView.text = video.type + " · " + video.publishedAt?.take(10)
 
                 itemView.setOnClickListener {
-                    listener.onTvVideosClick(video)
+                    listener.onTvSeriesVideosClick(video)
                 }
 
-                Glide.with(itemView).load(thumbnail).into(thumbnailImageView)
+                Glide.with(itemView).load(thumbnail)
+                    .placeholder(R.drawable.bg_placeholder).into(thumbnailImageView)
 
             }
         }
 
     }
 
-    class TvVideosComparator : DiffUtil.ItemCallback<TvVideo>() {
-        override fun areItemsTheSame(oldItem: TvVideo, newItem: TvVideo): Boolean {
+    class TvSeriesVideosComparator : DiffUtil.ItemCallback<TvSeriesVideo>() {
+        override fun areItemsTheSame(oldItem: TvSeriesVideo, newItem: TvSeriesVideo): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: TvVideo, newItem: TvVideo): Boolean {
+        override fun areContentsTheSame(oldItem: TvSeriesVideo, newItem: TvSeriesVideo): Boolean {
             return oldItem == newItem
         }
 
     }
 
     interface OnItemClickListener {
-        fun onTvVideosClick(video: TvVideo)
+        fun onTvSeriesVideosClick(video: TvSeriesVideo)
     }
 
 }

@@ -10,4 +10,13 @@
     <color name="black50">#75000000</color>
     <color name="black25">#40000000</color>
 
+    <color name="placeholder">#F0F0F0</color>
+
+    <color name="start_color">#FF0000</color> <!-- Replace with your desired start color -->
+    <color name="end_color">#00FF00</color> <!-- Replace with your desired end color -->
+
+    <color name="custom_chip_text_color">#E6E4E4</color>
+    <color name="custom_chip_background_color">#FF4081</color>
+    <color name="custom_chip_stroke_color">#FF0000</color>
+
 </resources>

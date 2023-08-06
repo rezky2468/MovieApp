@@ -14,3 +14,11 @@ http://img.youtube.com/vi/{ID}/0.jpg
 Option 3 – Get the custom thumbnail in 720p or 1080p HD image resolution
 
 http://img.youtube.com/vi/{ID}/maxresdefault.jpg
+
+default: The default thumbnail size (120x90 pixels).
+hqdefault: High-quality version of the thumbnail (480x360 pixels).
+mqdefault: Medium-quality version of the thumbnail (320x180 pixels).
+sddefault: Standard-definition version of the thumbnail (640x480 pixels).
+maxresdefault: Maximum resolution thumbnail available (varies depending on video
+
+similar and recommendations have the same json result but similar doesn't have a mediaType (movie/tv)

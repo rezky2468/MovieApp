@@ -10,7 +10,7 @@ import com.example.movieapp.BuildConfig
 import com.example.movieapp.databinding.LayoutRecyclerViewMovieSearchBinding
 import com.example.movieapp.models.movies.MovieSearch
 
-class MovieSearchAdapter(private val listener: OnItemClickListener? = null) :
+class MovieSearchAdapter(private val listener: OnItemClickListener) :
     ListAdapter<MovieSearch, MovieSearchAdapter.MovieSearchViewHolder>(MovieSearchComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieSearchViewHolder {
@@ -19,34 +19,26 @@ class MovieSearchAdapter(private val listener: OnItemClickListener? = null) :
             parent,
             false
         )
-        return MovieSearchViewHolder(binding, listener, this)
+        return MovieSearchViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MovieSearchViewHolder, position: Int) {
         val currentItem = getItem(position)
         if (currentItem != null) {
-            holder.bind(currentItem)
+            holder.bind(currentItem, listener)
         }
     }
 
     class MovieSearchViewHolder(
         private val binding: LayoutRecyclerViewMovieSearchBinding,
-        private val listener: OnItemClickListener? = null,
-        private val adapter: MovieSearchAdapter
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: MovieSearch) {
+        fun bind(movie: MovieSearch, listener: OnItemClickListener) {
             binding.apply {
                 Glide.with(itemView).load(BuildConfig.TMDB_PHOTO_BASE_URL + movie.posterPath)
                     .into(imageView)
                 textView.text = movie.title
-            }
-        }
-        init {
-            itemView.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    val movie = adapter.getItem(position)
-                    movie?.let { listener?.onMovieSearchClick(it) }
+                itemView.setOnClickListener {
+                    listener.onMovieSearchClick(movie)
                 }
             }
         }

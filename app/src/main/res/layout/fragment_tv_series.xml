@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:scrollbars="none"
     tools:context=".views.home.tv.TvSeriesFragment">
 
     <LinearLayout
@@ -27,7 +28,8 @@
                     android:id="@+id/tv_airing_today_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:text="Airing Today TV Series"
                     android:textSize="20sp"
@@ -37,15 +39,17 @@
 
                 <ImageView
                     android:id="@+id/show_tv_airing_today_image_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginEnd="16dp"
-                    android:padding="5dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:padding="3dp"
                     android:src="@drawable/ic_arrow_circle_right"
                     app:layout_constraintBottom_toBottomOf="@id/tv_airing_today_label"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_airing_today_label"
-                    app:tint="@color/black" />
+                    app:tint="@color/black75" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/tv_airing_today_recycler_view"
@@ -53,12 +57,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:clipToPadding="false"
-                    android:orientation="horizontal"
                     android:paddingHorizontal="8dp"
                     android:paddingBottom="40dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/show_tv_airing_today_image_view" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_airing_today_label" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -84,10 +87,12 @@
 
             <ImageView
                 android:id="@+id/show_tv_on_the_air_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:padding="5dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="3dp"
                 android:src="@drawable/ic_arrow_circle_right"
                 app:layout_constraintBottom_toBottomOf="@id/tv_on_the_air_label"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -111,59 +116,61 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="100dp"
-            android:background="@drawable/bg_white">
+            android:background="@color/red">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_popular_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Popular TV Series"
+                    android:textColor="@color/black75"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/show_tv_popular_image_view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:padding="3dp"
+                    android:src="@drawable/ic_arrow_circle_right"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_popular_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_popular_label"
+                    app:tint="@color/black75" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tv_popular_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="8dp"
+                    android:paddingBottom="40dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_popular_label" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_red">
-
-            <TextView
-                android:id="@+id/tv_popular_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Popular TV Series"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/show_tv_popular_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:padding="5dp"
-                android:src="@drawable/ic_arrow_circle_right"
-                app:layout_constraintBottom_toBottomOf="@id/tv_popular_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_popular_label"
-                app:tint="@color/white" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/tv_popular_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:clipToPadding="false"
-                android:paddingHorizontal="8dp"
-                android:paddingBottom="40dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_popular_label" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_white">
+            android:background="@color/red">
 
             <TextView
                 android:id="@+id/tv_top_rated_label"
@@ -172,7 +179,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Top Rated Tv Series"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -180,15 +187,17 @@
 
             <ImageView
                 android:id="@+id/show_tv_top_rated_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:padding="5dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="3dp"
                 android:src="@drawable/ic_arrow_circle_right"
                 app:layout_constraintBottom_toBottomOf="@id/tv_top_rated_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_top_rated_label"
-                app:tint="@color/black" />
+                app:tint="@color/white" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/tv_top_rated_recycler_view"
@@ -205,5 +214,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
-    
+
 </ScrollView>

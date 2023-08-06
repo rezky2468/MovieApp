@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.BuildConfig
+import com.example.movieapp.R
 import com.example.movieapp.databinding.LayoutRecyclerViewMoviePreviewWhiteBinding
 import com.example.movieapp.models.movies.MovieNowPlaying
 import com.facebook.shimmer.ShimmerFrameLayout
@@ -39,6 +40,7 @@ class NowPlayingPreviewAdapter(private val listener: OnItemClickListener) :
             binding.apply {
                 Glide.with(itemView)
                     .load(BuildConfig.TMDB_PHOTO_BASE_URL + movie.posterPath)
+                    .placeholder(R.drawable.bg_placeholder)
                     .into(imageView)
                 textView.text = movie.title
                 itemView.setOnClickListener {

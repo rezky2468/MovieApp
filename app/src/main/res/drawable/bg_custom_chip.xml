@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/custom_chip_background.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Unchecked state -->
+    <item android:state_checked="false">
+        <shape android:shape="rectangle">
+            <!-- Customize the background color for unchecked state -->
+            <solid android:color="@color/black25" />
+        </shape>
+    </item>
+
+    <!-- Checked state -->
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <!-- Customize the background color for checked state -->
+            <solid android:color="@color/red" />
+        </shape>
+    </item>
+</selector>

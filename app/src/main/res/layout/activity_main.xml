@@ -20,7 +20,9 @@
             android:id="@+id/profile_image_view"
             android:layout_width="36dp"
             android:layout_height="34dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
             android:padding="1dp"
             android:src="@drawable/ic_person_pin"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -57,10 +59,12 @@
 
         <ImageView
             android:id="@+id/dark_mode_image_view"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="8dp"
-            android:padding="5dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:padding="2dp"
             android:src="@drawable/ic_dark_mode"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,8 +79,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout2"
@@ -143,8 +147,7 @@
                             android:layout_marginTop="8dp"
                             android:ellipsize="end"
                             android:maxLines="3"
-                            android:minLines="3"
-                            android:text="Transformer: Rise of The Beasts no JutsuTransformer: Rise of The Beasts no Jutsu"
+                            android:text="Dr. Strange in the Multiverse of Madness"
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -159,9 +162,10 @@
                             android:text="Release in:"
                             android:textColor="@color/red"
                             android:textSize="12sp"
+                            android:layout_marginBottom="12dp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/movie_reminder2" />
+                            app:layout_constraintBottom_toBottomOf="parent"/>
 
                         <TextView
                             android:layout_width="0dp"
@@ -178,7 +182,7 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:id="@+id/btn1"
                         android:layout_width="38dp"
                         android:layout_height="38dp"
@@ -191,12 +195,20 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
                             android:padding="8dp"
                             android:src="@drawable/ic_star" />
 
-                    </LinearLayout>
+                        <ImageView
+                            android:id="@+id/btnn1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true" />
 
-                    <LinearLayout
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:id="@+id/btn2"
                         android:layout_width="38dp"
                         android:layout_height="38dp"
@@ -209,12 +221,21 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
                             android:padding="8dp"
                             android:src="@drawable/ic_list" />
 
-                    </LinearLayout>
+                        <ImageView
+                            android:id="@+id/btnn2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true" />
 
-                    <LinearLayout
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:id="@+id/btn3"
                         android:layout_width="38dp"
                         android:layout_height="38dp"
@@ -228,10 +249,19 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
                             android:padding="8dp"
                             android:src="@drawable/ic_watch_later" />
 
-                    </LinearLayout>
+                        <ImageView
+                            android:id="@+id/btnn3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true" />
+
+                    </RelativeLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -246,28 +276,53 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/orange"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img"
-                app:tabGravity="fill"
-                app:tabIndicatorColor="#ffffff"
-                app:tabIndicatorHeight="3dp"
-                app:tabMode="fixed"
-                app:tabSelectedTextColor="#ffffff"
-                app:tabTextColor="#ffffff">
+                android:checkable="true"
+                android:paddingHorizontal="8dp"
+                android:background="@color/white"
+                android:paddingTop="8dp"
+                app:selectionRequired="true"
+                app:singleSelection="true">
 
-            </com.google.android.material.tabs.TabLayout>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/movies_chip"
+                    style="@style/CustomChipChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Movies" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/tv_series_chip"
+                    style="@style/CustomChipChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tv Series" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/trending_chip"
+                    style="@style/CustomChipChoice"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trending" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <FrameLayout
+                android:id="@+id/fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout_height="match_parent" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white" />
+                android:background="@color/white"
+                android:visibility="gone" />
 
         </LinearLayout>
 

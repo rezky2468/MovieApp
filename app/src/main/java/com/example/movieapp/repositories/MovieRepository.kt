@@ -4,8 +4,18 @@ import com.example.movieapp.BuildConfig
 import androidx.room.withTransaction
 import com.example.movieapp.api.ApiService
 import com.example.movieapp.api.LocalDatabase
+import com.example.movieapp.models.movies.MovieCreditResponse
+import com.example.movieapp.models.movies.MovieDetailsEntity
+import com.example.movieapp.models.movies.MovieDetailsResponse
+import com.example.movieapp.models.movies.MovieGenreEntity
+import com.example.movieapp.models.movies.MovieImageResponse
+import com.example.movieapp.models.movies.MovieVideoResponse
+import com.example.movieapp.utils.Resource
+import com.example.movieapp.utils.convertNetworkBoundResource
 import com.example.movieapp.utils.networkBoundResource
 import com.example.movieapp.utils.simpleNetworkBoundResource
+import com.google.gson.Gson
+import kotlinx.coroutines.delay
 
 import javax.inject.Inject
 import javax.inject.Named
@@ -23,7 +33,6 @@ class MovieRepository @Inject constructor(
             localDao.getMovieNowPlaying()
         },
         fetch = {
-//            delay(2000)
             movieApi.getMovieNowPlaying(BuildConfig.TMDB_API_KEY).results
         },
         saveFetchResult = {
@@ -76,50 +85,12 @@ class MovieRepository @Inject constructor(
         }
     )
 
-    fun getMovieDetail(movieId: Int) = networkBoundResource(
-        query = {
-            localDao.getMovieDetail()
-        },
+    fun getMovieDetails(movieId: Int) = simpleNetworkBoundResource(
         fetch = {
-            movieApi.getMovieDetail(movieId, BuildConfig.TMDB_API_KEY)
-        },
-        saveFetchResult = {
-            db.withTransaction {
-                localDao.deleteMovieDetail()
-                localDao.insertMovieDetail(it)
-            }
+            movieApi.getMovieDetails(movieId, BuildConfig.TMDB_API_KEY, "images,videos,credits,similar,recommendations")
         }
     )
-//    fun getMovieImages(movieId: Int) = networkBoundResource(
-//        query = {
-//            localDao.getMovieImages()
-//        },
-//        fetch = {
-//            movieApi.getMovieImages(movieId, BuildConfig.TMDB_API_KEY).backdrops?.take(6)
-//        },
-//        saveFetchResult = {
-//            db.withTransaction {
-//                localDao.deleteMovieImages()
-//                localDao.insertMovieImages(it)
-//            }
-//        }
-//    )
 
-    fun getMovieImages(movieId: Int) = simpleNetworkBoundResource(
-        fetch = {
-            movieApi.getMovieImages(movieId, BuildConfig.TMDB_API_KEY).backdrops?.take(6)
-        }
-    )
-    fun getMovieCasts(movieId: Int) = simpleNetworkBoundResource(
-        fetch = {
-            movieApi.getMovieCredits(movieId, BuildConfig.TMDB_API_KEY).cast
-        }
-    )
-    fun getMovieVideos(movieId: Int) = simpleNetworkBoundResource(
-        fetch = {
-            movieApi.getMovieVideos(movieId, BuildConfig.TMDB_API_KEY).results?.take(6)
-        }
-    )
     fun getMovieSearch(query: String) = networkBoundResource(
         query = {
             localDao.getMovieSearch()
@@ -132,6 +103,11 @@ class MovieRepository @Inject constructor(
                 localDao.deleteMovieSearch()
                 localDao.insertMovieSearch(it)
             }
+        }
+    )
+    fun getMultiSearch(query: String) = simpleNetworkBoundResource(
+        fetch = {
+            movieApi.getMultiSearch(BuildConfig.TMDB_API_KEY, query, false).results
         }
     )
 
@@ -194,19 +170,9 @@ class MovieRepository @Inject constructor(
         }
     )
 
-    fun getTvBackdrops(seriesId: Int) = simpleNetworkBoundResource(
+    fun getTvSeriesDetails(seriesId: Int) = simpleNetworkBoundResource(
         fetch = {
-            movieApi.getTvImages(seriesId, BuildConfig.TMDB_API_KEY).backdrops
-        }
-    )
-    fun getTvVideos(seriesId: Int) = simpleNetworkBoundResource(
-        fetch = {
-            movieApi.getTvVideos(seriesId, BuildConfig.TMDB_API_KEY).results
-        }
-    )
-    fun getTvCasts(seriesId: Int) = simpleNetworkBoundResource(
-        fetch = {
-            movieApi.getTvCasts(seriesId, BuildConfig.TMDB_API_KEY).cast
+            movieApi.getTvSeriesDetails(seriesId, BuildConfig.TMDB_API_KEY, "images,videos,credits,similar,recommendations")
         }
     )
 
@@ -253,6 +219,23 @@ class MovieRepository @Inject constructor(
             }
         }
     )
+
+
+
+
+    fun createRequestToken() = simpleNetworkBoundResource(
+        fetch = {
+            movieApi.createRequestToken(BuildConfig.TMDB_API_KEY)
+//            val authenticationCallback = response.headers()["authentication-callback"]
+        }
+    )
+
+
+
+
+
+
+
 
 
 }

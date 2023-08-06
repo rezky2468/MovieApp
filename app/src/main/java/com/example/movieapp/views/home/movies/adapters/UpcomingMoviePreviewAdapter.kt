@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.BuildConfig
+import com.example.movieapp.R
 import com.example.movieapp.databinding.LayoutRecyclerViewMoviePreviewBinding
 import com.example.movieapp.models.movies.MovieUpcoming
 
@@ -41,6 +42,7 @@ class UpcomingMoviePreviewAdapter(private val listener: OnItemClickListener? = n
             binding.apply {
                 Glide.with(itemView)
                     .load(BuildConfig.TMDB_PHOTO_BASE_URL + movie.posterPath)
+                    .placeholder(R.drawable.bg_placeholder)
                     .into(imageView)
                 textView.text = movie.title
             }

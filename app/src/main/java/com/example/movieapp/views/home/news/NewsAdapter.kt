@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.movieapp.databinding.LayoutRecyclerViewNewsBinding
 import com.example.movieapp.models.news.Articles
 
-class NewsAdapter(private val listener: OnItemClickListener) :
+class NewsAdapter(private val listener: OnItemClickListener, private val activity: String) :
     ListAdapter<Articles, NewsAdapter.NewsViewHolder>(NewsComparator()) {
 
     private val maxItemsToShow = 5
@@ -32,7 +32,11 @@ class NewsAdapter(private val listener: OnItemClickListener) :
 
     override fun submitList(list: List<Articles>?) {
         if (list != null) {
-            super.submitList(list.take(maxItemsToShow))
+            if (activity == "detail") {
+                super.submitList(list.take(5))
+            } else {
+                super.submitList(list)
+            }
         } else {
             super.submitList(null)
         }

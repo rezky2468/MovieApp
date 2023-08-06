@@ -2,22 +2,42 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MovieApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">@color/red</item>
 
-        <!-- Set the status bar background color to red -->
         <item name="android:statusBarColor">@color/red</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimationStyle</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+    </style>
 
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_sheet</item>
+    </style>
+
+    <style name="SelectedChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:background">@color/red</item>
+        <!-- Customize text color, etc. as needed -->
+    </style>
+
+    <style name="UnselectedChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:background">@color/black</item>
+        <!-- Customize text color, etc. as needed -->
     </style>
 
     <style name="Theme.MovieApp" parent="Base.Theme.MovieApp" />
 
     <style name="WhiteStatusBarTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize other attributes of the theme if needed -->
-        <!-- ... -->
-        <!-- Set the status bar icon color to light (default) -->
         <item name="android:windowLightStatusBar">true</item>
-        <!-- Set the status bar background color to white -->
         <item name="android:statusBarColor">@android:color/white</item>
+    </style>
+
+    <style name="BlackStatusBarTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/black</item>
     </style>
 
     <style name="RedStatusBarTheme" parent="Theme.Material3.DayNight.NoActionBar">
@@ -25,10 +45,56 @@
         <item name="android:statusBarColor">@color/red</item>
     </style>
 
+    <!-- Transparent Status Bar -->
+    <style name="TransparentStatusBar" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <!-- Define the custom activity transition animation -->
+    <style name="CustomActivityAnimationStyle">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/bg_splash_screen</item>
         <!-- Customize other attributes of the theme if needed -->
         <!-- ... -->
+    </style>
+
+    <style name="PopupMenuStyle" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@drawable/bg_pop_up</item>
+    </style>
+
+    <!-- Custom TabLayout style -->
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/orange</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabTextAppearance">@style/CustomTabText</item>
+        <!-- Add more attributes for customization -->
+    </style>
+
+    <!-- Custom Tab Text style -->
+    <style name="CustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/red</item>
+        <!-- Add more attributes for text customization -->
+    </style>
+
+    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <!-- Customize the text color -->
+        <item name="android:textColor">@color/white</item>
+
+        <!-- Set the custom background for the Chip -->
+<!--        <item name="chipBackgroundColor">@drawable/bg_custom_chip</item>-->
+
+        <!-- Customize other attributes as needed -->
+    </style>
+
+    <style name="CustomChipChoice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/background_color_chip_state_list</item>
+        <item name="android:textColor">@color/text_color_chip_state_list</item>
     </style>
 
 </resources>
